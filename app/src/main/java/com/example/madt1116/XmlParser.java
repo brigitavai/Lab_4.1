@@ -13,7 +13,7 @@ import javax.xml.parsers.DocumentBuilderFactory;
 import javax.xml.parsers.ParserConfigurationException;
 
 public class XmlParser {
-    public static String getRateFromECB(InputStream stream, String currencyCode) throws IOException {
+    public static String getRateFromECB(InputStream stream) throws IOException {
         String result = "";
         try {
             DocumentBuilderFactory xmlDocFactory = DocumentBuilderFactory.newInstance();
@@ -25,10 +25,10 @@ public class XmlParser {
                 Element cube = (Element) rateNodes.item(i);
                 if(cube.hasAttribute("currency")){
                     String currencyName = cube.getAttribute("currency");
-                    if(currencyName.equals(currencyCode))
+
                     {
-                        result = cube.getAttribute("rate");
-                        break;
+                        result = "Currency " + currencyName + " rate is " + cube.getAttribute("rate");
+
                     }
                 }
             }
